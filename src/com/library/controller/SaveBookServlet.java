@@ -18,28 +18,31 @@ import com.library.model.Book;
  */
 @WebServlet("/SaveBookServlet")
 public class SaveBookServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		String name = request.getParameter("name");
-		String authorName = request.getParameter("author_name");
-		System.out.println(request.getParameter("price"));
-		float price = Float.parseFloat(request.getParameter("price"));
-		Book book = new Book();
-		book.setName(name);
-		book.setAuthorName(authorName);
-		book.setPrice(price);
-		BookDAO dao = new BookDAO();
-		try {
-			dao.save(book);
-			List<Book> bookList = dao.findAll();
-			request.setAttribute("BOOKLIST", bookList);
-			RequestDispatcher rd = request.getRequestDispatcher("listbooks.jsp");
-			rd.forward(request, response);
-		} catch (Exception e) {
-			e.printStackTrace();
+	
+		private static final long serialVersionUID = 1L;
+	
+		protected void doPost(HttpServletRequest request, 
+				HttpServletResponse response) throws ServletException, IOException {
+			
+				String name = request.getParameter("name");
+				String authorName = request.getParameter("author_name");
+				System.out.println(request.getParameter("price"));
+				float price = Float.parseFloat(request.getParameter("price"));
+				Book book = new Book();
+				book.setName(name);
+				book.setAuthorName(authorName);
+				book.setPrice(price);
+				BookDAO dao = new BookDAO();
+				
+				try {
+					dao.save(book);
+					List<Book> bookList = dao.findAll();
+					request.setAttribute("BOOKLIST", bookList);
+					RequestDispatcher rd = request.getRequestDispatcher("listbooks.jsp");
+					rd.forward(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 		}
-	}
 
 }

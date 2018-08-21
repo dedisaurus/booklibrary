@@ -17,20 +17,23 @@ import com.library.model.Book;
  */
 @WebServlet("/EditBookServlet")
 public class EditBookServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		int id = Integer.parseInt(request.getParameter("id"));
-		BookDAO dao = new BookDAO();
-		try {
-			Book book = dao.findById(id);
-			request.setAttribute("BOOK", book);
-			RequestDispatcher rd = request.getRequestDispatcher("updatebook.jsp");
-			rd.forward(request, response);
-		} catch (Exception e) {
-			e.printStackTrace();
+	
+		private static final long serialVersionUID = 1L;
+	
+		protected void doGet(HttpServletRequest request, 
+				HttpServletResponse response) throws ServletException, IOException {
+			
+				  int id = Integer.parseInt(request.getParameter("id"));
+				  BookDAO dao = new BookDAO();
+				
+				  try {
+						Book book = dao.findById(id);
+						request.setAttribute("BOOK", book);
+						RequestDispatcher rd = request.getRequestDispatcher("updatebook.jsp");
+						rd.forward(request, response);
+				  } catch (Exception e) {
+				    e.printStackTrace();
+				  }
 		}
-	}
 
 }

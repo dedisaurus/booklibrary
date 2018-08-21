@@ -18,20 +18,24 @@ import com.library.model.Book;
  */
 @WebServlet("/ListBookServlet")
 public class ListBookServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		BookDAO dao = new BookDAO();
-		try {
-			List<Book> bookList = dao.findAll();
-			request.setAttribute("BOOKLIST", bookList);
-			RequestDispatcher rd = request.getRequestDispatcher("listbooks.jsp");
-			rd.forward(request, response);
-		} catch (Exception e) {
-			e.printStackTrace();
+	
+		private static final long serialVersionUID = 1L;
+	
+		protected void doGet(HttpServletRequest request, 
+				HttpServletResponse response) throws ServletException, IOException {
+			
+				BookDAO dao = new BookDAO();
+				
+				try {
+					List<Book> bookList = dao.findAll();
+					request.setAttribute("BOOKLIST", bookList);
+					RequestDispatcher rd = request.getRequestDispatcher("listbooks.jsp");
+					rd.forward(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}	
+	
 		}
 
-	}
-
 }
+ 

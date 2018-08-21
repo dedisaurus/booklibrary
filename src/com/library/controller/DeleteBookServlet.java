@@ -18,22 +18,25 @@ import com.library.model.Book;
  */
 @WebServlet("/DeleteBookServlet")
 public class DeleteBookServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		int id = Integer.parseInt(request.getParameter("id"));
-		BookDAO dao = new BookDAO();
-		try {
-			dao.delete(id);
-			List<Book> bookList = dao.findAll();
-			request.setAttribute("BOOKLIST", bookList);
-			RequestDispatcher rd = request.getRequestDispatcher("listbooks.jsp");
-			rd.forward(request, response);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+	
+		private static final long serialVersionUID = 1L;
+	
+		protected void doGet(HttpServletRequest request, 
+				HttpServletResponse response) throws ServletException, IOException {
+			
+				  int id = Integer.parseInt(request.getParameter("id"));
+				  BookDAO dao = new BookDAO();
+				
+				  try {
+					  	dao.delete(id);
+						List<Book> bookList = dao.findAll();
+						request.setAttribute("BOOKLIST", bookList);
+						RequestDispatcher rd = request.getRequestDispatcher("listbooks.jsp");
+						rd.forward(request, response);
+				  } catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				  }
 		}
-	}
 
 }
