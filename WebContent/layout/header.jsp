@@ -88,7 +88,7 @@ body {
 			<%
 				if (LOGGED_IN_USER != false) {
 			%>
-			<li><a> Welcome <%=name%>
+			<li><a style="color:white"> Welcome <%=name%>
 			</a></li>
 			<%
 				} else {
