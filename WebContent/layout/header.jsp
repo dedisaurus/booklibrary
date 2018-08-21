@@ -88,7 +88,7 @@ body {
 			<%
 				if (LOGGED_IN_USER != false) {
 			%>
-			<li><a class="nav-link" href=""> Welcome <%=name%>
+			<li><a> Welcome <%=name%>
 			</a></li>
 			<%
 				} else {
