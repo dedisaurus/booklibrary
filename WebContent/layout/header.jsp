@@ -55,7 +55,7 @@ body {
 					<span class="sr-only">(current)</span>
 			</a></li>
 			<%
-				if (LOGGED_IN_USER != false) {
+				if (LOGGED_IN_USER) {
 			%>
 		   <%--<li class="nav-item dropdown"><a
 				class="nav-link dropdown-toggle" href="#users" id="dropdown01"
@@ -86,9 +86,9 @@ body {
 		</ul>
 		<ul class="navbar-nav mr-auto">
 			<%
-				if (LOGGED_IN_USER != false) {
+				if (LOGGED_IN_USER) {
 			%>
-			<li><a style="color:white"> Welcome <%=name%> 
+			<li><a style="color: white;"> Welcome <%=name%>
 			</a></li>
 			<%
 				} else {

@@ -29,11 +29,12 @@
 					<tr>
 					<c:set var = "price" value ="${book.price}" />
 					<fmt:setLocale value="en_US"/>
+					<fmt:parseDate value="${book.publishedDate}" type="DATE" pattern="yyyy-MM-dd" var="formatedDate"/>
 						<td>${book.id}</td>
 						<td>${book.name}</td>
 						<td>${book.authorName}</td>
 						<td><fmt:formatNumber value="${price}" type="currency"/></td>
-						<td>${book.publishedDate}</td>
+						<td><fmt:formatDate value="${formatedDate}" pattern="EEE, MMM dd yyyy " type="DATE"/></td>
 						<td><a
 							href="<%=request.getContextPath()%>/EditBookServlet?id=${book.id}"
 							class="fa fa-pencil" data-toggle="tooltip" data-placement="top"

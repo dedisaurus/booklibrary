@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html >
 <html>
 <head>
@@ -55,8 +57,12 @@ function isNumberKey(evt)
 				<label for="published_date" class="col-2 col-form-label">Book
 					Published Date</label>
 				<div class="col-5">
+					<fmt:parseDate value="${BOOK.publishedDate}" type="DATE" pattern="yyyy-MM-dd" var="formatedDate"/>
+					<fmt:formatDate value="${formatedDate}" pattern="EEE, MMM dd yyyy " type="DATE" var="idD"/>
 					<input class="form-control" type="text" id="published_date"
-						name="published_date" value="${BOOK.publishedDate}" readonly />
+						name="published_date" readonly 
+						value="${idD}"
+						 />
 				</div>
 			</div>
 			<div class="form-group row">
