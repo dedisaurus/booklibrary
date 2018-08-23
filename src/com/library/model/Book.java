@@ -52,7 +52,7 @@ public class Book {
 	
 		@Override
 		public String toString() {
-			return "Book [id=" + id + ", name=" + name + ", price=" + price + ", authorName=" + authorName
+			return "Books [id=" + id + ", name=" + name + ", price=" + price + ", authorName=" + authorName
 					+ ", publishedDate=" + publishedDate + "]";
 		}
 

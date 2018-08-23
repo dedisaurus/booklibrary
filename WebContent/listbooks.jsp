@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix = "fmt" uri ="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,10 +27,12 @@
 			<tbody>
 				<c:forEach var="book" items="${BOOKLIST}">
 					<tr>
+					<c:set var = "price" value ="${book.price}" />
+					<fmt:setLocale value="en_US"/>
 						<td>${book.id}</td>
 						<td>${book.name}</td>
 						<td>${book.authorName}</td>
-						<td>${book.price}</td>
+						<td><fmt:formatNumber value="${price}" type="currency"/></td>
 						<td>${book.publishedDate}</td>
 						<td><a
 							href="<%=request.getContextPath()%>/EditBookServlet?id=${book.id}"

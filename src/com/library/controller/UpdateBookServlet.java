@@ -30,10 +30,10 @@ public class UpdateBookServlet extends HttpServlet {
 				System.out.println(request.getParameter("price"));
 				float price = Float.parseFloat(request.getParameter("price"));
 				Book book = new Book();
-				book.setId(id);
 				book.setName(name);
 				book.setAuthorName(authorName);
 				book.setPrice(price);
+				book.setId(id);
 				BookDAO dao = new BookDAO();
 				
 				try {

@@ -5,6 +5,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>update book</title>
+<script type="text/javascript">
+function isNumberKey(evt)
+{
+	var charCode = (evt.which) ? evt.which : evt.keyCode;
+	if (charCode != 46 && charCode > 31 
+	&& (charCode < 48 || charCode > 57))
+	return false;
+	return true;
+} 
+</script>
 </head>
 <body>
 	<jsp:include page="layout/header.jsp"></jsp:include>
@@ -37,7 +47,8 @@
 				<label for="price" class="col-2 col-form-label">Book Price</label>
 				<div class="col-5">
 					<input class="form-control" type="text" id="price" name="price"
-						value="${BOOK.price}" min="1" required />
+						value="${BOOK.price}"
+						onkeypress="return isNumberKey(event)" placeholder="$" required />
 				</div>
 			</div>
 			<div class="form-group row">
